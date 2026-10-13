@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surat Buat Sayangku 💖</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffe6f0 0%, #fff0f5 50%, #ffe4e1 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Kelopak bunga melayang di background */
+    .bg-flower {
+      position: absolute;
+      font-size: 24px;
+      opacity: 0.6;
+      animation: float 6s infinite ease-in-out;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(20deg); }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.92);
+      padding: 35px 25px;
+      border-radius: 25px;
+      box-shadow: 0 12px 30px rgba(255, 182, 193, 0.4);
+      border: 3px solid #ffb6c1;
+      width: 85%;
+      max-width: 420px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .slide {
+      display: none;
+    }
+    .slide.active {
+      display: block;
+      animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    h2 {
+      color: #ff69b4;
+      font-size: 22px;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px #ffe4e1;
+    }
+    p {
+      color: #6c5ce7;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .flower-display {
+      font-size: 50px;
+      margin: 15px 0;
+      letter-spacing: 5px;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .btn-container {
+      margin-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    button {
+      background: linear-gradient(45deg, #ff8da1, #ff69b4);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+      transition: all 0.2s ease;
+      flex: 1;
+    }
+    button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(255, 105, 180, 0.5);
+    }
+    button:disabled {
+      background: #ffd3e2;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hiasan Bunga Background -->
+  <div class="bg-flower" style="top: 10%; left: 10%;">🌸</div>
+  <div class="bg-flower" style="top: 15%; right: 12%;">🌺</div>
+  <div class="bg-flower" style="bottom: 15%; left: 8%;">🌷</div>
+  <div class="bg-flower" style="bottom: 10%; right: 10%;">💐</div>
+
+  <div class="card">
+    <!-- SLIDE 1 -->
+    <div class="slide active">
+      <h2>Halo Sayangku! ✨🌸</h2>
+      <p>haii sayannggkuu hehe aku coba buat iniii takut nyaa jelekk maap yaa masihh pemulaaa #izinnnnnnn heheh lanjutt dongg ke slide berikut nyaa</p>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide">
+      <h2>Buat Kamu Sayang 🌷💐</h2>
+      <div class="flower-display">🌸🌺🌷💐🌻</div>
+      <p>inii bungga banyaakkk buatt kamuuuu</p>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide">
+      <h2>Terima Kasih Ya ❤️✨</h2>
+      <p>makasihhh udahh pernah ada dalam ceritaa hati kuuu 💖😊</p>
+    </div>
+
+    <!-- Navigasi Tombol -->
+    <div class="btn-container">
+      <button id="prevBtn" onclick="changeSlide(-1)" disabled>Kembali 🌸</button>
+      <button id="nextBtn" onclick="changeSlide(1)">Lanjut ❤️</button>
+    </div>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      
+      prevBtn.disabled = index === 0;
+      if (index === slides.length - 1) {
+        nextBtn.innerText = "Selesai 💖";
+      } else {
+        nextBtn.innerText = "Lanjut ❤️";
+      }
+    }
+
+    function changeSlide(direction) {
+      currentSlide += direction;
+      if (currentSlide >= slides.length) {
+        currentSlide = slides.length - 1;
+        alert("Selesai! Terima kasih udah dibaca sayangku ❤️✨");
+        return;
+      }
+      showSlide(currentSlide);
+    }
+  </script>
+
+</body>
+</html>
